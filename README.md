@@ -27,7 +27,7 @@ to get K slightly different matrices from the original one.
 #### To read in a matrix:
 
 ```R
-inDataTable <- read.table(inoutMxPath, skip=1)   # skipping header row
+inDataTable <- read.table(inputMxPath, skip=1)   # skipping header row
 inputMx <- as.matrix(inDataTable)
 ```
 
@@ -41,7 +41,18 @@ write.table(myNoisyMatrix, file=outFilename, quote=FALSE, append = TRUE, col.nam
 close(myWriter)
 ```
 
+#### To set the random seed
+```R
+set.seed(23)
+```
+
+
+#### To generate a vector of 15 random numbers between -2.0 and 4.4
+```R
+runif(15, -2.0, 4.4)
+```
+
 ## Optional tasks:
-- Give an error when the input file does not contain a header, or contains non-number items, or is otherwise inconsistent (not M x N numbers)
+- Raise an error when the input file does not contain a header, or contains non-number items, or is otherwise inconsistent (not M x N numbers)
 - Write a test: ./testGenRandMxes.sh , it should call another R script that gets two input paths (the original matrix and the directory with the noisified matrices) and a p value, and checks if the random noise falls within an acceptable range
 - Turn the existing R codes into an R package and use testthat for testing
